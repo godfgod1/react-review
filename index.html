@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
 
     <body>
@@ -12,28 +12,35 @@
     <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
     <!-- 리액트돔은 html에 렌더링 작업함 -->
     <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
-    <Script>
-      const root = document.getElementById("root");
-
-      const h3 = React.createElement("h3", {
-        id:"title",
-        onMouseEnter: () => console.log('im clicked')
-      },"hello I am h3")
-      const btn = React.createElement("button", {
-        onClick: () => console.log('im clicked'),
-        style:{
-          backgroundColor:"tomato",
-          width:200,
-          height:200,
-        }
-      },
-      "click me")
-      const container = React.createElement("div", null,[h3, btn])
-
-      ReactDOM.render(container, root)
-    </Script>
-</head>
-<body>
+    <!-- JSX 가 돌아가게 함 -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
     
-</body>
+    <script type="text/babel">
+      const root = document.getElementById("root");
+      const Title = () => (
+        <h3 id="title" onMouseEnter={() => console.log("mouse Enter")}>
+          Hello I'm a title
+        </h3>
+      );
+      const Button = () =>  (
+        <button
+          style={{
+            backgroundColor: "tomato",
+          }}
+
+          onClick={() => console.log("mouse Enter")}
+        >
+          Click me{" "}
+        </button>
+      );
+    
+      const Container = () => (<div>
+      
+      <Title/>
+      <Button/>
+      </div>)
+      ReactDOM.render(<Container/>, root);
+    </script>
+  </head>
+  <body></body>
 </html>
